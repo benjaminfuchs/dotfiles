@@ -1,13 +1,10 @@
-[http]
-    sslVerify = false
-
 [user]
-    name = Romain Chossart
-    email = romainchossart@gmail.com
+    name = Benjamin Fuchs
+    email = email@benjaminfuchs.de
 
 [core]
     excludesfile = ~/.gitexclude
-    trustctime = false
+    editor = vim
 
 [color]
     ui = auto
@@ -31,25 +28,9 @@
     ci = commit
     br = branch
     co = checkout
-    rb = rebase
-    di = diff
-    dif = diff
-    dica = diff --cached
-    difca = diff --cached
 
     out = !git fetch && git log FETCH_HEAD
     in  = !git fetch && git log ..FETCH_HEAD
-
-    # To make sure you don commit a given file:
-    # git assume passwords.txt
-    # # Do whatever (including commit/push)
-    # git status
-    # # List the 'assumed-unchanged' files
-    # git assumed
-    # git unassume passwords.txt
-    assume   = update-index --assume-unchanged
-    unassume = update-index --no-assume-unchanged
-    assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
 
     # Snapshot without changing working tree
     snapshot = git stash save "snapshot: $(date)" || git stash apply "stash@{0}"
@@ -61,18 +42,3 @@
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 
-[credential]
-	helper = osxkeychain
-[rerere]
-	enabled = true
-[push]
-	default = simple
-
-[merge "ours"]
-	driver = true
-
-[merge "theirs"]
-	driver = mv %B %A
-
-[merge "conflict"]
-	driver = false

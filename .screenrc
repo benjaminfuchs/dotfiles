@@ -1,7 +1,0 @@
-#
-# SETS A STARTUP ENVIRONMENT
-#
-source ~/.screenrc_base
-
-# Put fist window last so that we have focus on it at startup
-screen -t win1 1

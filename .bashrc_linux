@@ -1,3 +1,7 @@
+# TODO To add this include:
+# source ~/.bashrc_linux
+# in your .bashrc
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -10,43 +14,33 @@ if [ "$TERM" == "xterm" ]; then
     export TERM=xterm-256color
 fi
 
-# Source Box-specific config
-case $(hostname) in
-    'slacker') # Slacker config
-	source ~/.bashrc_slacker
-	;;
-    'blinker') # Blinker config
-	source ~/.bashrc_blinker
-	;;
-    'kollok.org') # Kollok config
-	source ~/.bashrc_kollok
-	;;
-esac
-
-# Vim setting for "e" alias
-[ -z "$(which vim)" ] && export L_VIM="vi" || export L_VIM="vim"
-#export L_PS1_ALREADY_SET="Y"
-
 ###############################
 #           ALIASES           #
 ###############################
 
 # General
-alias api='sudo aptitude install'
-alias aps='sudo aptitude search'
-
-[[ $(cat /etc/issue) =~ ^Ubuntu ]] && __ACK='ack-grep' || __ACK='ack'
-alias ack="$__ACK"
-
-# Prefixes
-alias luit_iso='luit -encoding ISO 8859-15'
+alias ll='ls -la'
 
 # Shortcuts
-alias cdapen='cd /etc/apache2/sites-enabled'
-alias cdapav='cd /etc/apache2/sites-available'
+# e.g.: alias cdpysite='cd /usr/local/lib/python2.6/site-packages'
 
-alias cdpysite='cd /usr/local/lib/python2.6/site-packages'
-alias cddjango='cd /usr/local/lib/python2.6/site-packages/django'
+###############################
+#           GIT STUFF         #
+###############################
 
-# Kollok stream
-alias kstream="vlc qtcapture:// --sout='#transcode{vcodec=theo,vb=200,scale=0.5,acodec=none}:std{access=shout,mux=ogg,dst=source:bite@10.7.0.1:8000/sitaktif.ogg}'"
+# Enable tab completion
+source ~/bin/git-completion.bash
+
+# colors!
+green="\[\033[0;32m\]"
+blue="\[\033[0;34m\]"
+purple="\[\033[0;35m\]"
+reset="\[\033[0m\]"
+
+# Change command prompt
+source ~/bin/git-prompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=1
+# '\u' adds the name of the current user to the prompt
+# '\$(__git_ps1)' adds git-related stuff
+# '\W' adds the name of the current directory
+export PS1="$purple\u$green\$(__git_ps1)$blue \W $ $reset"
