@@ -168,15 +168,15 @@ set go=agimrLtT
 
 "" Customization by Benjamin Fuchs 
 "" easy navigation after grep search
-map <C-F9> :cnext<CR>
-map <C-F8> :make \| copen<CR> 
-map <C-F7> :cprev<CR>
+map <F9> :cnext<CR>
+map <F8> :make \| copen<CR> 
+map <F7> :cprev<CR>
 
 "" search word under curser in current file
-map <C-F10> :execute 'vimgrep /'.expand('<cword>').'/gj '.expand('%')<CR>
+map <F10> :execute 'vimgrep /'.expand('<cword>').'/gj '.expand('%') <Bar> cw<CR>
 
 "" search word under curser in current directory and subdirectorys
-map <C-F6> :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
+map <C-F10> :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
 
 "" Turn on highlighting search matches 
 set hlsearch
