@@ -145,3 +145,6 @@ set foldlevel=20
 match Ignore /\r$/
 
 set pastetoggle=<F2>
+
+"" Filename complition with one key
+inoremap <C-f> <C-x><C-f>
