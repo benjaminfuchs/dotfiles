@@ -2,6 +2,8 @@
 # source ~/.bashrc_linux
 # in your .bashrc
 
+export EDITOR=vim
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -19,7 +21,12 @@ fi
 ###############################
 
 # General
+alias ls='ls --color'
+LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
+export LS_COLORS
 alias ll='ls -la'
+alias grep='grep --color'
+alias make='make 2>&1 | grep --color -iP "\^|warning:|error:|"'
 
 # Shortcuts
 # e.g.: alias cdpysite='cd /usr/local/lib/python2.6/site-packages'
@@ -33,7 +40,7 @@ source ~/.git-completion.bash
 
 # colors!
 green="\[\033[0;32m\]"
-blue="\[\033[0;34m\]"
+blue="\[\033[1;34m\]"
 purple="\[\033[0;35m\]"
 reset="\[\033[0m\]"
 
