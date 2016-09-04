@@ -30,16 +30,13 @@ endif
 "" Set update time to 1 second (default is 4 seconds), convenient vor taglist.vim.
 set updatetime=500
 
-"" Colours in xterm.
-map <F3> :se t_Co=16<C-M>:se t_AB=<C-V><ESC>[%?%p1%{8}%<%t%p1%{40}%+%e%p1%{92}%+%;%dm<C-V><C-M>:se t_AF=<C-V><ESC>[%?%p1%{8}%<%t%p1%{30}%+%e%p1%{82}%+%;%dm<C-V><C-M>
-
-"" Toggle between .h and .cpp with F4.
+"" Toggle between .h and .C with F4.
 function! ToggleBetweenHeaderAndSourceFile()
   let bufname = bufname("%")
   let ext = fnamemodify(bufname, ":e")
   if ext == "h"
-    let ext = "c"
-  elseif ext == "c"
+    let ext = "C"
+  elseif ext == "C"
     let ext = "h"
   else
     return
@@ -77,25 +74,11 @@ map <silent> <F12> :call ToggleEncoding()<CR>
 set nowrap
 set listchars=eol:$,extends:>
 
-"" Next / previous error with Tab / Shift+Tab.
-map <silent> <Tab> :cn<CR>
-map <silent> <S+Tab> :cp<CR>
-map <silent> <BS><Tab> :cp<CR>
-
-"" Umlaut mappings for US keyboard.
-imap "a �
-imap "o �
-imap "u �
-imap "s �
-imap "A �
-imap "O �
-imap "U �
-
 "" After this many msecs do not imap.
 set timeoutlen=500
 
 "" Always show the name of the file being edited.
-"" set ls=2
+set ls=2
 
 "" Show the mode (insert,replace,etc.)
 set showmode
@@ -132,41 +115,11 @@ set wmh=0
 :nmap ,s :source $HOME/.vimrc 
 :nmap ,v :sp $HOME/.vimrc 
 
-"" Latex Suite 1.5 wants it
-"" REQUIRED. This makes vim invoke latex-suite when you open a tex file.
-filetype plugin on
-
-"" IMPORTANT: win32 users will need to have 'shellslash' set so that latex
-"" can be called correctly.
-set shellslash
-
-"" IMPORTANT: grep will sometimes skip displaying the file name if you
-"" search in a singe file. This will confuse latex-suite. Set your grep
-"" program to alway generate a file-name.
-set grepprg=grep\ -nH\ $*
-
-"" OPTIONAL: This enables automatic indentation as you type (by 2 spaces)
-filetype indent on
-set sw=2
-
-"" no placeholders please
-let g:Imap_UsePlaceHolders = 0
-
-"" no " conversion please
-let g:Tex_SmartKeyQuote = 0
-
-"" don't use Makefile if one is there
-let g:Tex_UseMakefile = 0
-
-"" Syntax Highlighting for MhonArc Config files
-au BufNewFile,BufRead *.mrc so $HOME/.vim/mhonarc.vim
-
 "" set guifont=Courier10_BT/Roman/10
 set gfn=Courier\ 10\ Pitch\ 10
 set gfw=
 set go=agimrLtT
 
-"" Customization by Benjamin Fuchs 
 "" easy navigation after grep search
 map <F9> :cnext<CR>
 map <F8> :make \| copen<CR> 
@@ -181,7 +134,7 @@ map <C-F10> :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
 "" Turn on highlighting search matches 
 set hlsearch
 
-"" set indent to 8 WS
+"" set indent to 4 WS
 set smartindent
 set tabstop=4
 set shiftwidth=4
