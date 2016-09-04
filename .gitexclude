@@ -1,3 +1,6 @@
+*.project
+*.pydevproject
+
 *.sw[pon]
 *.o
 *.pyc

@@ -2,6 +2,8 @@
 # source ~/.bashrc_linux
 # in your .bashrc
 
+export EDITOR=vim
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -9,17 +11,20 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-# Year 2011 - say f**k you to 16 color terminals
-if [ "$TERM" == "xterm" ]; then
-    export TERM=xterm-256color
-fi
-
 ###############################
 #           ALIASES           #
 ###############################
 
 # General
+alias ls='ls --color'
+LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
+export LS_COLORS
 alias ll='ls -la'
+alias grep='grep --color'
+makefunction() {
+    make $1 2>&1 | grep --color -iP "\^|warning:|error:|"
+}
+alias make=makefunction
 
 # Shortcuts
 # e.g.: alias cdpysite='cd /usr/local/lib/python2.6/site-packages'
@@ -33,7 +38,7 @@ source ~/.git-completion.bash
 
 # colors!
 green="\[\033[0;32m\]"
-blue="\[\033[0;34m\]"
+blue="\[\033[1;34m\]"
 purple="\[\033[0;35m\]"
 reset="\[\033[0m\]"
 
@@ -43,4 +48,4 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 # '\u' adds the name of the current user to the prompt
 # '\$(__git_ps1)' adds git-related stuff
 # '\W' adds the name of the current directory
-export PS1="$purple\u$green\$(__git_ps1)$blue \W $ $reset"
+export PS1="\W$green\$(__git_ps1) $reset$ "
