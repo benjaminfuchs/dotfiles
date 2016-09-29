@@ -2,6 +2,7 @@
 # source ~/.bashrc_linux
 # in your .bashrc
 
+export GTEST_COLOR=1
 export EDITOR=vim
 
 # If not running interactively, don't do anything
@@ -26,7 +27,10 @@ LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
 export LS_COLORS
 alias ll='ls -la'
 alias grep='grep --color'
-alias make='make 2>&1 | grep --color -iP "\^|warning:|error:|"'
+make_func() {
+    make $1 2>&1 | grep --color -iP "\^|warning:|error:|"
+}
+alias make=make_func
 
 # Shortcuts
 # e.g.: alias cdpysite='cd /usr/local/lib/python2.6/site-packages'
@@ -40,8 +44,6 @@ source ~/.git-completion.bash
 
 # colors!
 green="\[\033[0;32m\]"
-blue="\[\033[1;34m\]"
-purple="\[\033[0;35m\]"
 reset="\[\033[0m\]"
 
 # Change command prompt
@@ -50,4 +52,4 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 # '\u' adds the name of the current user to the prompt
 # '\$(__git_ps1)' adds git-related stuff
 # '\W' adds the name of the current directory
-export PS1="$purple\u$green\$(__git_ps1)$blue \W $ $reset"
+export PS1="\W$green\$(__git_ps1)$reset $ "
