@@ -1,16 +1,13 @@
 [user]
     name = Benjamin Fuchs
     email = email@benjaminfuchs.de
-
 [core]
     excludesfile = ~/.gitexclude
     editor = vim
-
 [diff]
     tool = meld
 [merge]
     tool = meld
-
 [color]
     ui = auto
 [color "branch"]
@@ -27,7 +24,6 @@
     added = yellow
     changed = green
     untracked = cyan
-
 [alias]
     st = status
     ci = commit
