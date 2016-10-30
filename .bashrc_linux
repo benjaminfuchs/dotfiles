@@ -12,11 +12,6 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-# Year 2011 - say f**k you to 16 color terminals
-if [ "$TERM" == "xterm" ]; then
-    export TERM=xterm-256color
-fi
-
 ###############################
 #           ALIASES           #
 ###############################
@@ -26,11 +21,15 @@ alias ls='ls --color'
 LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
 export LS_COLORS
 alias ll='ls -la'
+sdifffunction() {
+    meld <( echo $1 ) <( echo $2 )
+}
+alias sdiff=sdifffunction
 alias grep='grep --color'
-make_func() {
+makefunction() {
     make $1 2>&1 | grep --color -iP "\^|warning:|error:|"
 }
-alias make=make_func
+alias make=makefunction
 
 # Shortcuts
 # e.g.: alias cdpysite='cd /usr/local/lib/python2.6/site-packages'
@@ -44,6 +43,8 @@ source ~/.git-completion.bash
 
 # colors!
 green="\[\033[0;32m\]"
+blue="\[\033[1;34m\]"
+purple="\[\033[0;35m\]"
 reset="\[\033[0m\]"
 
 # Change command prompt
