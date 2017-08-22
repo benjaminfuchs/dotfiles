@@ -1,13 +1,1 @@
 CONFIG
-
-.*.sw[opnm]
-.DS_Store
-
-.vim/.netrwhist
-.vim/doc/tags
-
-# Unison files - do not mess up :)
-.unison/*
-!.unison/config_shared
-!.unison/big_data.prf
-!.unison/small_data.prf
