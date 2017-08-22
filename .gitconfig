@@ -32,6 +32,8 @@
 
     out = !git fetch && git log FETCH_HEAD
     in  = !git fetch && git log ..FETCH_HEAD
+    
+    unstage = reset HEAD --
 
     # Snapshot without changing working tree
     snapshot = git stash save "snapshot: $(date)" || git stash apply "stash@{0}"
@@ -42,4 +44,4 @@
 
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-
+    last = log -1 HEAD
