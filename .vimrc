@@ -1,6 +1,6 @@
 "" No need to be compatible with vi and lose features.
 set nocompatible
-            
+
 "" Set textwidth to 80, this implies word wrap.
 set textwidth=80
 
@@ -82,27 +82,27 @@ set ls=2
 
 "" Show the mode (insert,replace,etc.)
 set showmode
- 
+
 "" No blinking cursor please.
 set gcr=a:blinkon0
 
 "" Cycle through completions with TAB (and SHIFT-TAB cycles backwards).
-function! InsertTabWrapper(direction) 
-    let col = col('.') - 1 
-    if !col || getline('.')[col - 1] !~ '\k' 
-        return "\<tab>" 
-    elseif "backward" == a:direction 
-        return "\<c-p>" 
-    else 
-        return "\<c-n>" 
-    endif 
-endfunction 
+function! InsertTabWrapper(direction)
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    elseif "backward" == a:direction
+        return "\<c-p>"
+    else
+        return "\<c-n>"
+    endif
+endfunction
 inoremap <tab> <c-r>=InsertTabWrapper ("forward")<cr>
 inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<cr>
 
 "" Cycling through Windows quicker.
-map <C-M> <C-W>j<C-W>_ 
-map <C-K> <C-W>k<C-W>_ 
+map <C-M> <C-W>j<C-W>_
+map <C-K> <C-W>k<C-W>_
 map <A-Down>  <C-W><Down><C-W>_
 map <A-Up>    <C-W><Up><C-W>_
 map <A-Left>  <C-W><Left><C-W>|
@@ -112,8 +112,8 @@ map <A-Right> <C-W><Right><C-W>|
 set wmh=0
 
 "" Make it easy to update/reload _vimrc.
-:nmap ,s :source $HOME/.vimrc 
-:nmap ,v :sp $HOME/.vimrc 
+:nmap ,s :source $HOME/.vimrc
+:nmap ,v :sp $HOME/.vimrc
 
 "" set guifont=Courier10_BT/Roman/10
 set gfn=Courier\ 10\ Pitch\ 10
@@ -122,7 +122,7 @@ set go=agimrLtT
 
 "" easy navigation after grep search
 map <F9> :cnext<CR>
-map <F8> :make \| copen<CR> 
+map <F8> :make \| copen<CR>
 map <F7> :cprev<CR>
 
 "" search word under curser in current file
@@ -131,14 +131,14 @@ map <F10> :execute 'vimgrep /'.expand('<cword>').'/gj '.expand('%') <Bar> cw<CR>
 "" search word under curser in current directory and subdirectorys
 map <C-F10> :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
 
-"" Turn on highlighting search matches 
+"" Turn on highlighting search matches
 set hlsearch
 
 "" set indent to 4 WS
 set smartindent
 set tabstop=4
 set shiftwidth=4
-        
+
 set foldmethod=syntax
 set foldlevel=20
 
@@ -148,3 +148,5 @@ set pastetoggle=<F2>
 
 "" Filename complition with one key
 inoremap <C-f> <C-x><C-f>
+
+autocmd BufWritePre * :%s/\s\+$//e
