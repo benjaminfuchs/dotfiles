@@ -4,6 +4,7 @@
 [core]
     excludesfile = ~/.gitexclude
     editor = vim
+    whitespace = trailing-space,space-before-tab
 [diff]
     tool = meld
     submodule = log
