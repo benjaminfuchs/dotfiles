@@ -6,6 +6,7 @@
     editor = vim
 [diff]
     tool = meld
+    submodule = log
 [merge]
     tool = meld
 [color]
@@ -15,10 +16,10 @@
     local = blue
     remote = yellow
 [color "diff"]
-    meta = yellow 
+    meta = yellow
     frag = magenta
-    old = red 
-    new = green 
+    old = red
+    new = green
     whitespace = red reverse
 [color "status"]
     added = yellow
@@ -30,9 +31,11 @@
     br = branch
     co = checkout
 
+    cdiff = diff --cached
+
     out = !git fetch && git log FETCH_HEAD
     in  = !git fetch && git log ..FETCH_HEAD
-    
+
     unstage = reset HEAD --
 
     # Snapshot without changing working tree
@@ -45,3 +48,7 @@
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
     last = log -1 HEAD
+[credential]
+    helper = cache
+[push]
+    default = simple
