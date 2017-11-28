@@ -12,3 +12,5 @@ makefunction() {
     make $1 2>&1 | grep --color -iP "\^|warning:|error:|"
 }
 alias make=makefunction
+alias ...='cd ..'
+alias ....='cd .. & cd ..'
