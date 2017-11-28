@@ -13,4 +13,4 @@ makefunction() {
 }
 alias make=makefunction
 alias ...='cd ..'
-alias ....='cd .. & cd ..'
+alias ....='cd .. && cd ..'
