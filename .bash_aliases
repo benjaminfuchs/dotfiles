@@ -14,3 +14,7 @@ makefunction() {
 alias make=makefunction
 alias ...='cd ..'
 alias ....='cd .. && cd ..'
+
+alias pip='pip3'
+alias python='python3'
+alias pytest='pytest-3'
