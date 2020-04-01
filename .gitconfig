@@ -5,7 +5,7 @@
     excludesfile = ~/.gitexclude
     editor = vim
     whitespace = trailing-space,space-before-tab,tab-in-indent
-	autocrlf = input
+    autocrlf = input
 [diff]
     tool = meld
     submodule = log
